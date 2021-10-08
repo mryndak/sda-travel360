@@ -32,7 +32,7 @@ public class User {
     private String phoneNumber;
     private boolean confirmEmail;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     private Set<String> roles = new HashSet<>();
 
 }

@@ -1,6 +1,7 @@
 package pl.sda.travel360.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.sda.travel360.dto.UserDTO;
 import pl.sda.travel360.exception.UserAlreadyExistException;
@@ -17,13 +18,20 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final UserMapper userMapper;
+    private final PasswordEncoder passwordEncoder;
 
     public void addUser(UserDTO userDTO) {
+
+        var passwordHash = passwordEncoder.encode(userDTO.getPassword());
+
+
         var isUserExist = userRepository.existsByLoginOrEmail(userDTO.getLogin(), userDTO.getEmail());
         if(isUserExist) {
             throw new UserAlreadyExistException();
         }
         //
+
+
 
     }
 
