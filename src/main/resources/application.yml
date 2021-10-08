@@ -6,3 +6,32 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: mateusz.sda.rzeszow@gmail.com
+    password: rzeszow12@
+    default-encoding: UTF-8
+    protocol: smtp
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+
+
+info:
+  app:
+    name: @project.name@
+    version: @project.version@
+    profile: ${spring.profiles.active:}
+  serverInfo:
+    os: ${os.name}
+    osVersion: ${os.version}
+  user:
+    timeZone: ${user.timezone}
+    country: ${user.country}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
